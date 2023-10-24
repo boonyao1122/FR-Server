@@ -19,7 +19,6 @@ from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
 
 urlpatterns = [
-    path('', admin.site.urls),
     path('admin/', admin.site.urls),
     # Using csrf_exempt to be able to use an electron version of graphiql to send auth headers
     re_path(r'^graphql', csrf_exempt(GraphQLView.as_view(graphiql=True))),

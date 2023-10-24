@@ -18,8 +18,15 @@ class Query(graphene.ObjectType):
   @login_required
   def resolve_user(self, info):
     return info.context.user
+  
+  users = graphene.List(
+    UserType,
+    description='Return a list of all users'
+  )
 
-
+  @login_required
+  def resolve_users(self, info):
+    return User.objects.all()
 
 class SignUp(graphene.Mutation):
   class Arguments:
